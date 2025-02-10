@@ -3,7 +3,17 @@ import { Ionicons } from "@expo/vector-icons";
 
 function TabLayout() {
     return (
-        <Tabs>
+        <Tabs
+            screenOptions={{
+                tabBarActiveTintColor: "#007AFF",
+                tabBarInactiveTintColor: "#999",
+                tabBarStyle: {
+                    backgroundColor: "#fff",
+                    borderTopWidth: 1,
+                    borderTopColor: "#ddd",
+                },
+            }}
+        >
             <Tabs.Screen
                 name="index"
                 options={{
@@ -15,7 +25,13 @@ function TabLayout() {
                         fontWeight: "bold",
                         color: "#007AFF",
                     },
-                    tabBarIcon: () => <Ionicons name="home" size={24} color="#007AFF" />,
+                    tabBarIcon: ({ focused }) => (
+                        <Ionicons
+                            name="home"
+                            size={24}
+                            color={focused ? "#007AFF" : "#999"}
+                        />
+                    ),
                 }}
             />
 
@@ -30,7 +46,13 @@ function TabLayout() {
                         fontWeight: "bold",
                         color: "#007AFF",
                     },
-                    tabBarIcon: () => <Ionicons name="people" size={24} color="#007AFF" />,
+                    tabBarIcon: ({ focused }) => (
+                        <Ionicons
+                            name="people"
+                            size={24}
+                            color={focused ? "#007AFF" : "#999"}
+                        />
+                    ),
                 }}
             />
 
@@ -38,14 +60,20 @@ function TabLayout() {
                 name="item"
                 options={{
                     headerTitle: "Item Section",
-                    title: "Items",
+                    title: "Item",
                     headerTitleAlign: "center",
                     headerTitleStyle: {
                         fontSize: 26,
                         fontWeight: "bold",
                         color: "#007AFF",
                     },
-                    tabBarIcon: () => <Ionicons name="pricetags-sharp" size={24} color="#007AFF" />,
+                    tabBarIcon: ({ focused }) => (
+                        <Ionicons
+                            name="pricetags-sharp"
+                            size={24}
+                            color={focused ? "#007AFF" : "#999"}
+                        />
+                    ),
                 }}
             />
 
@@ -60,7 +88,13 @@ function TabLayout() {
                         fontWeight: "bold",
                         color: "#007AFF",
                     },
-                    tabBarIcon: () => <Ionicons name="receipt" size={24} color="#007AFF" />,
+                    tabBarIcon: ({ focused }) => (
+                        <Ionicons
+                            name="receipt"
+                            size={24}
+                            color={focused ? "#007AFF" : "#999"}
+                        />
+                    ),
                 }}
             />
         </Tabs>
