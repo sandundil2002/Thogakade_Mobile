@@ -34,4 +34,38 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         marginVertical: 10,
     },
+
+    tableHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ddd',
+    },
+
+    tableHeaderText: {
+        flex: 1,
+        fontWeight: 'semibold',
+        fontSize: 16,
+        textAlign: 'center',
+    },
+
+    tableRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+    },
+
+    tableCell: {
+        flex: 1,
+        fontSize: 14,
+        textAlign: 'center',
+        textTransform: 'capitalize',
+    },
+
+    selectedRow: {
+        backgroundColor: "#e8f5e9", // Light green background for selected row
+    },
 });
