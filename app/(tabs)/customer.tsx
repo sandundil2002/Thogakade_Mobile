@@ -111,7 +111,7 @@ function Customer() {
             </View>
 
             <View style={styles.buttonContainer}>
-                <Button title="Save" onPress={handleSave} />
+                <Button title="Add" onPress={handleSave} />
                 <Button title="Update" onPress={handleUpdate} />
                 <Button title="Delete" onPress={handleDelete} />
             </View>
