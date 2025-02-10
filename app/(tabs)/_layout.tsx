@@ -60,7 +60,7 @@ function TabLayout() {
                 name="item"
                 options={{
                     headerTitle: "Item Section",
-                    title: "Item",
+                    title: "Items",
                     headerTitleAlign: "center",
                     headerTitleStyle: {
                         fontSize: 26,
