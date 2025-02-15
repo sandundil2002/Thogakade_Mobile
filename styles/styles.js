@@ -77,7 +77,7 @@ export const styles = StyleSheet.create({
     },
 
     label: {
-        fontSize: 16,
+        fontSize: 18,
         marginTop: 12,
     },
 
@@ -87,21 +87,18 @@ export const styles = StyleSheet.create({
     },
 
     picker: {
-        borderWidth: 1,
+        borderWidth: 2,
         borderColor: "#ccc",
-        borderRadius: 8,
-        marginVertical: 8,
+        borderRadius: 12,
+        marginVertical: 5,
         backgroundColor: "#fff",
         shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
+        shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 3,
-        padding: 12,
-        flex: 1,
-        fontSize: 13,
-        flexDirection: "row",
-        alignItems: "center",
+        shadowRadius: 2,
+        elevation: 2,
+        fontSize: 16,
+        width: "100%",
     },
 
     infoText: {

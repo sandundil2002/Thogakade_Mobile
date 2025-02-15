@@ -33,7 +33,6 @@ function Item() {
         };
 
         dispatch(addItem(newItem));
-        alert("Item Saved Successfully");
         setName("");
         setPrice("");
         setQuantity("");
@@ -58,7 +57,6 @@ function Item() {
         }
 
         dispatch(updateItem(modifyItem));
-        alert("Item Updated Successfully");
         setName("");
         setPrice("");
         setQuantity("");
@@ -71,7 +69,6 @@ function Item() {
         }
 
         dispatch(deleteItem(selectedItem.id));
-        alert("Item Deleted Successfully");
         setName("");
         setPrice("");
         setQuantity("");

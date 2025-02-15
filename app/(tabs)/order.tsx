@@ -27,11 +27,15 @@ function Order() {
             Alert.alert("Validation", "Please select an item");
             return;
         }
+
         const quantity = parseInt(itemQuantity);
-        if (isNaN(quantity) || quantity <= 0) {
+        const availableQuantity = parseInt(selectedItem.quantity);
+
+        if (isNaN(quantity) || quantity <= 0 || quantity > availableQuantity) {
             Alert.alert("Validation", "Please enter a valid quantity");
             return;
         }
+
         const totalPrice = Number(selectedItem.price) * quantity;
 
         const existingIndex = cart.findIndex((cartItem) => cartItem.id === selectedItem.id);
@@ -84,7 +88,7 @@ function Order() {
         dispatch(addOrder(newOrder));
         Alert.alert(
             "Order Placed",
-            `Order for customer ${selectedCustomerId} has been placed.\nTotal: $${totalOrderPrice.toFixed(2)}`
+            `Order for customer ${selectedCustomerId} has been placed.\nTotal: $${totalOrderPrice.toFixed(2)}`,
         );
 
         setSelectedCustomerId("");

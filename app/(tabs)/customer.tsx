@@ -33,7 +33,6 @@ function Customer() {
         };
 
         dispatch(addCustomer(newCustomer));
-        alert("Customer Saved Successfully");
         setName("");
         setAddress("");
         setMobile("");
@@ -59,7 +58,6 @@ function Customer() {
 
 
         dispatch(updateCustomer(modifyCustomer));
-        alert("Customer Updated Successfully");
         setName("");
         setAddress("");
         setMobile("");
@@ -73,7 +71,6 @@ function Customer() {
         }
 
         dispatch(deleteCustomer(selectedCustomer.id));
-        alert("Customer Deleted Successfully");
         setName("");
         setAddress("");
         setMobile("");
