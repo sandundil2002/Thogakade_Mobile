@@ -1,20 +1,18 @@
 import {styles} from "../../styles/styles";
 import {Button, Text, TextInput, View} from "react-native";
 import {useState} from "react";
-
-interface Item {
-    id: string;
-    name: string;
-    price: string;
-    quantity: string;
-}
+import {ItemModel} from "../../models/itemModel";
+import {AppDispatch, RootState} from "../../store/store";
+import {useDispatch, useSelector} from "react-redux";
+import {addItem, deleteItem, updateItem} from "../../store/slices/ItemSlice";
 
 function Item() {
+    const dispatch = useDispatch<AppDispatch>();
+    const items = useSelector((state: RootState) => state.item.items);
     const [name, setName] = useState<string>("");
     const [price, setPrice] = useState<string>("");
     const [quantity, setQuantity] = useState<string>("");
-    const [items, setItems] = useState<Item[]>([]);
-    const [selectedItem, setSelectedItem] = useState<Item | null>(null);
+    const [selectedItem, setSelectedItem] = useState<ItemModel | null>(null);
 
     const generateItemId = (): string => {
         const nextId = items.length + 1;
@@ -27,14 +25,14 @@ function Item() {
             return;
         }
 
-        const newItem: Item = {
+        const newItem: ItemModel = {
             id: generateItemId(),
             name,
             price,
             quantity,
         };
 
-        setItems([...items, newItem]);
+        dispatch(addItem(newItem));
         alert("Item Saved Successfully");
         setName("");
         setPrice("");
@@ -52,11 +50,14 @@ function Item() {
             return;
         }
 
-        const updatedItems = items.map((item) =>
-            item.id === selectedItem.id ? { ...item, name, price, quantity } : item
-        );
+        const modifyItem: ItemModel = {
+            id: selectedItem.id,
+            name,
+            price,
+            quantity,
+        }
 
-        setItems(updatedItems);
+        dispatch(updateItem(modifyItem));
         alert("Item Updated Successfully");
         setName("");
         setPrice("");
@@ -69,15 +70,14 @@ function Item() {
             return;
         }
 
-        const updatedItems = items.filter((item) => item.id !== selectedItem.id);
-        setItems(updatedItems);
+        dispatch(deleteItem(selectedItem.id));
         alert("Item Deleted Successfully");
         setName("");
         setPrice("");
         setQuantity("");
     };
 
-    const handleRowClick = (item: Item) => {
+    const handleRowClick = (item: ItemModel) => {
         setSelectedItem(item);
         setName(item.name);
         setPrice(item.price);

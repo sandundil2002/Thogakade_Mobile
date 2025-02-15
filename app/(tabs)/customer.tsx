@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import {styles} from "../../styles/styles";
 import {TextInput, View, Button, Text, Alert} from "react-native";
-
-interface Customer {
-    id: string;
-    name: string;
-    address: string;
-    mobile: string;
-}
+import {CustomerModel} from "../../models/customerModel";
+import {AppDispatch, RootState} from "../../store/store";
+import {useDispatch, useSelector} from "react-redux";
+import {addCustomer, deleteCustomer, updateCustomer} from "../../store/slices/CustomerSlice";
 
 function Customer() {
+    const dispatch = useDispatch<AppDispatch>();
+    const customers = useSelector((state: RootState) => state.customer.customers);
     const [name, setName] = useState<string>("");
     const [address, setAddress] = useState<string>("");
     const [mobile, setMobile] = useState<string>("");
-    const [customers, setCustomers] = useState<Customer[]>([]);
-    const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(null);
+    const [selectedCustomer, setSelectedCustomer] = useState<CustomerModel | null>(null);
 
     const generateCustomerId = (): string => {
         const nextId = customers.length + 1;
@@ -27,14 +25,14 @@ function Customer() {
             return;
         }
 
-        const newCustomer: Customer = {
+        const newCustomer: CustomerModel = {
             id: generateCustomerId(),
             name,
             address,
             mobile,
         };
 
-        setCustomers([...customers, newCustomer]);
+        dispatch(addCustomer(newCustomer));
         alert("Customer Saved Successfully");
         setName("");
         setAddress("");
@@ -52,11 +50,15 @@ function Customer() {
             return;
         }
 
-        const updatedCustomers = customers.map((customer) =>
-            customer.id === selectedCustomer.id ? { ...customer, name, address, mobile } : customer
-        );
+        const modifyCustomer: CustomerModel = {
+            id: selectedCustomer.id,
+            name,
+            address,
+            mobile,
+        }
 
-        setCustomers(updatedCustomers);
+
+        dispatch(updateCustomer(modifyCustomer));
         alert("Customer Updated Successfully");
         setName("");
         setAddress("");
@@ -70,9 +72,7 @@ function Customer() {
             return;
         }
 
-        const updatedCustomers = customers.filter((customer) => customer.id !== selectedCustomer.id);
-
-        setCustomers(updatedCustomers);
+        dispatch(deleteCustomer(selectedCustomer.id));
         alert("Customer Deleted Successfully");
         setName("");
         setAddress("");
@@ -80,7 +80,7 @@ function Customer() {
         setSelectedCustomer(null);
     };
 
-    const handleRowClick = (customer: Customer) => {
+    const handleRowClick = (customer: CustomerModel) => {
         setSelectedCustomer(customer);
         setName(customer.name);
         setAddress(customer.address);
