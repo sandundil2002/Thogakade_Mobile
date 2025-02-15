@@ -122,4 +122,99 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         alignSelf: "center",
     },
+
+    metricsContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: 20,
+    },
+
+    metricCard: {
+        flex: 1,
+        alignItems: "center",
+        padding: 15,
+        marginHorizontal: 5,
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
+    },
+
+    metricTitle: {
+        fontSize: 16,
+        color: "#555",
+    },
+
+    metricValue: {
+        fontSize: 20,
+        fontWeight: "bold",
+        marginTop: 5,
+    },
+
+    section: {
+        marginBottom: 20,
+    },
+
+    sectionTitle: {
+        fontSize: 18,
+        fontWeight: "bold",
+        marginBottom: 10,
+        textAlign: "center",
+    },
+
+    noDataText: {
+        textAlign: "center",
+        color: "#888",
+    },
+
+    orderItem: {
+        padding: 10,
+        marginBottom: 10,
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
+    },
+
+    actionsContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+
+    actionButton: {
+        flex: 1,
+        alignItems: "center",
+        padding: 15,
+        marginHorizontal: 5,
+        backgroundColor: "#007bff",
+        borderRadius: 8,
+    },
+
+    actionButtonText: {
+        color: "#fff",
+        fontWeight: "bold",
+    },
+
+    widgetContainer: {
+        marginBottom: 20,
+    },
+
+    inventoryItem: {
+        textTransform: "capitalize",
+        padding: 10,
+        marginBottom: 5,
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
+    },
 });
