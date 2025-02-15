@@ -29,17 +29,16 @@ function Index() {
         <View style={styles.orderItem}>
             <Text>Order ID: {orderId}</Text>
             <Text>Customer ID: {customerId}</Text>
-            <Text>Items: {items.map((item) => item.name).join(", ")}</Text>
             <Text>Total Price: ${totalPrice.toFixed(2)}</Text>
         </View>
     );
 
     const InventoryStatusWidget = ({ items }: InventoryStatusWidgetProps) => {
-        const lowStockItems = items.filter((item) => Number(item.quantity) <= 10);
+        const lowStockItems = items.filter((item) => Number(item.quantity) <= 25);
 
         return (
             <View style={styles.widgetContainer}>
-                <Text style={styles.sectionTitle}>Inventory Status</Text>
+                <Text style={styles.sectionTitle}>Low Inventory Status</Text>
                 {lowStockItems.length > 0 ? (
                     <FlatList
                         data={lowStockItems}
