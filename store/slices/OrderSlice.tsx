@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { OrderModel } from "../../models/orderModel";
+import { OrderModel } from "../../models/cartModel";
 
 interface OrderState {
     orders: OrderModel[];
